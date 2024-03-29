@@ -141,6 +141,8 @@ namespace ShareX
         public List<TextDestination> SecondaryTextUploaders = new List<TextDestination>();
         public List<FileDestination> SecondaryFileUploaders = new List<FileDestination>();
 
+  
+
         #endregion Upload
 
         #region History
@@ -237,7 +239,12 @@ namespace ShareX
         public bool PNGStripColorSpaceInformation { get; set; }
 
         [Category("Upload"), DefaultValue(false), Description("Can be used to disable uploading application wide.")]
-        public bool DisableUpload { get; set; }
+        public bool DisableUpload
+        {
+            get { return true; }
+            set{}
+                
+        }
 
         [Category("Upload"), DefaultValue(false), Description("Accept invalid SSL certificates when uploading.")]
         public bool AcceptInvalidSSLCertificates { get; set; }
