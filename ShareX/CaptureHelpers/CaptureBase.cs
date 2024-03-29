@@ -117,6 +117,7 @@ namespace ShareX
                     taskSettings.AfterCaptureJob = taskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.AddImageEffects);
                 }
 
+                //System.Windows.Forms.MessageBox.Show("Call to UploadManager disabled. Stacktrace: \n\n" + Environment.StackTrace);
                 UploadManager.RunImageTask(metadata, taskSettings);
             }
         }

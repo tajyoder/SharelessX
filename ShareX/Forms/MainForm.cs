@@ -825,9 +825,9 @@ namespace ShareX
                 dgvHotkeys.BackgroundColor = SystemColors.Window;
             }
 
-            tsmiTweetMessage.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
-            tsmiTrayTweetMessage.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
-            tsbX.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
+            //tsmiTweetMessage.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
+            //tsmiTrayTweetMessage.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
+            //tsbX.Image = TaskHelpers.FindMenuIcon(HotkeyType.TweetMessage);
 
             tsbDiscord.Image = ShareXResources.IsDarkTheme ? Resources.Discord_white : Resources.Discord_black;
 
@@ -839,12 +839,12 @@ namespace ShareX
             tsmiTrayOCR.Image = TaskHelpers.FindMenuIcon(HotkeyType.OCR);
             tsmiOCRImage.Image = TaskHelpers.FindMenuIcon(HotkeyType.OCR);
 
-            tsmiShortenURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
-            tsmiTrayShortenURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
-            tsmiURLShorteners.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
-            tsmiTrayURLShorteners.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
-            tsmiTestURLShortener.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
-            tsmiShortenSelectedURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiShortenURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiTrayShortenURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiURLShorteners.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiTrayURLShorteners.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiTestURLShortener.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
+            //tsmiShortenSelectedURL.Image = TaskHelpers.FindMenuIcon(HotkeyType.ShortenURL);
 
             pbPreview.UpdateTheme();
             pbPreview.UpdateCheckers(true);
@@ -1995,9 +1995,9 @@ namespace ShareX
             {
                 switch (action.ClickAction)
                 {
-                    case BalloonTipClickAction.OpenURL:
-                        URLHelpers.OpenURL(action.Text);
-                        break;
+                    //case BalloonTipClickAction.OpenURL:
+                    //    URLHelpers.OpenURL(action.Text);
+                    //    break;
                     case BalloonTipClickAction.OpenDebugLog:
                         TaskHelpers.OpenDebugLog();
                         break;

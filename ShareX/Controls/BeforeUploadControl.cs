@@ -265,5 +265,10 @@ namespace ShareX
 
             return null;
         }
+
+        private void flp_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

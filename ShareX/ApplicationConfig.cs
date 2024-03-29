@@ -70,7 +70,9 @@ namespace ShareX
 
         public HotkeyType TrayLeftClickAction = HotkeyType.RectangleRegion;
         public HotkeyType TrayLeftDoubleClickAction = HotkeyType.OpenMainWindow;
-        public HotkeyType TrayMiddleClickAction = HotkeyType.ClipboardUploadWithContentViewer;
+        //public HotkeyType TrayMiddleClickAction = HotkeyType.ClipboardUploadWithContentViewer;
+        public HotkeyType TrayMiddleClickAction = HotkeyType.ImageViewer;
+
 
         public bool AutoCheckUpdate = true;
         public bool CheckPreReleaseUpdates = false;
@@ -301,7 +303,7 @@ namespace ShareX
         #region Actions toolbar
 
         public List<HotkeyType> ActionsToolbarList = new List<HotkeyType>() { HotkeyType.RectangleRegion, HotkeyType.PrintScreen, HotkeyType.ScreenRecorder,
-            HotkeyType.None, HotkeyType.FileUpload, HotkeyType.ClipboardUploadWithContentViewer };
+            HotkeyType.None};
 
         public bool ActionsToolbarRunAtStartup = false;
 

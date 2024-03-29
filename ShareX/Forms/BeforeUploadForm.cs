@@ -65,5 +65,10 @@ namespace ShareX
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void ucBeforeUpload_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

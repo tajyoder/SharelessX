@@ -44,18 +44,18 @@ namespace ShareX
         {
             get
             {
-                switch (Job)
-                {
-                    case TaskJob.Job:
-                        return TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.UploadImageToHost);
-                    case TaskJob.DataUpload:
-                    case TaskJob.FileUpload:
-                    case TaskJob.TextUpload:
-                    case TaskJob.ShortenURL:
-                    case TaskJob.ShareURL:
-                    case TaskJob.DownloadUpload:
-                        return true;
-                }
+                //switch (Job)
+                //{
+                //    case TaskJob.Job:
+                //        return TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.UploadImageToHost);
+                //    case TaskJob.DataUpload:
+                //    case TaskJob.FileUpload:
+                //    case TaskJob.TextUpload:
+                //    case TaskJob.ShortenURL:
+                //    case TaskJob.ShareURL:
+                //    case TaskJob.DownloadUpload:
+                //        return true;
+                //}
 
                 return false;
             }
@@ -128,13 +128,13 @@ namespace ShareX
                                 case EDataType.File:
                                     return TaskSettings.FileDestination.GetLocalizedDescription();
                             }
-                        case EDataType.URL:
-                            if (Job == TaskJob.ShareURL)
-                            {
-                                return TaskSettings.URLSharingServiceDestination.GetLocalizedDescription();
-                            }
+                        //case EDataType.URL:
+                        //    if (Job == TaskJob.ShareURL)
+                        //    {
+                        //        return TaskSettings.URLSharingServiceDestination.GetLocalizedDescription();
+                        //    }
 
-                            return TaskSettings.URLShortenerDestination.GetLocalizedDescription();
+                        //    return TaskSettings.URLShortenerDestination.GetLocalizedDescription();
                     }
                 }
 

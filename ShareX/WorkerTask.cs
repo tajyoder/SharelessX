@@ -88,45 +88,45 @@ namespace ShareX
             return task;
         }
 
-        public static WorkerTask CreateDataUploaderTask(EDataType dataType, Stream stream, string fileName, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.Job = TaskJob.DataUpload;
-            task.Info.DataType = dataType;
-            task.Info.FileName = fileName;
-            task.Data = stream;
-            return task;
-        }
+        //public static WorkerTask CreateDataUploaderTask(EDataType dataType, Stream stream, string fileName, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.Job = TaskJob.DataUpload;
+        //    task.Info.DataType = dataType;
+        //    task.Info.FileName = fileName;
+        //    task.Data = stream;
+        //    return task;
+        //}
 
-        public static WorkerTask CreateFileUploaderTask(string filePath, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.FilePath = filePath;
-            task.Info.DataType = TaskHelpers.FindDataType(task.Info.FilePath, taskSettings);
+        //public static WorkerTask CreateFileUploaderTask(string filePath, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.FilePath = filePath;
+        //    task.Info.DataType = TaskHelpers.FindDataType(task.Info.FilePath, taskSettings);
 
-            if (task.Info.TaskSettings.UploadSettings.FileUploadUseNamePattern)
-            {
-                string ext = FileHelpers.GetFileNameExtension(task.Info.FilePath);
-                task.Info.FileName = TaskHelpers.GetFileName(task.Info.TaskSettings, ext);
-            }
+        //    if (task.Info.TaskSettings.UploadSettings.FileUploadUseNamePattern)
+        //    {
+        //        string ext = FileHelpers.GetFileNameExtension(task.Info.FilePath);
+        //        task.Info.FileName = TaskHelpers.GetFileName(task.Info.TaskSettings, ext);
+        //    }
 
-            if (task.Info.TaskSettings.AdvancedSettings.ProcessImagesDuringFileUpload && task.Info.DataType == EDataType.Image)
-            {
-                task.Info.Job = TaskJob.Job;
-                task.Image = ImageHelpers.LoadImage(task.Info.FilePath);
-            }
-            else
-            {
-                task.Info.Job = TaskJob.FileUpload;
+        //    if (task.Info.TaskSettings.AdvancedSettings.ProcessImagesDuringFileUpload && task.Info.DataType == EDataType.Image)
+        //    {
+        //        task.Info.Job = TaskJob.Job;
+        //        task.Image = ImageHelpers.LoadImage(task.Info.FilePath);
+        //    }
+        //    else
+        //    {
+        //        task.Info.Job = TaskJob.FileUpload;
 
-                if (!task.LoadFileStream())
-                {
-                    return null;
-                }
-            }
+        //        if (!task.LoadFileStream())
+        //        {
+        //            return null;
+        //        }
+        //    }
 
-            return task;
-        }
+        //    return task;
+        //}
 
         public static WorkerTask CreateImageUploaderTask(TaskMetadata metadata, TaskSettings taskSettings, string customFileName = null)
         {
@@ -148,35 +148,35 @@ namespace ShareX
             return task;
         }
 
-        public static WorkerTask CreateTextUploaderTask(string text, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.Job = TaskJob.TextUpload;
-            task.Info.DataType = EDataType.Text;
-            task.Info.FileName = TaskHelpers.GetFileName(taskSettings, taskSettings.AdvancedSettings.TextFileExtension);
-            task.Text = text;
-            return task;
-        }
+        //public static WorkerTask CreateTextUploaderTask(string text, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.Job = TaskJob.TextUpload;
+        //    task.Info.DataType = EDataType.Text;
+        //    task.Info.FileName = TaskHelpers.GetFileName(taskSettings, taskSettings.AdvancedSettings.TextFileExtension);
+        //    task.Text = text;
+        //    return task;
+        //}
 
-        public static WorkerTask CreateURLShortenerTask(string url, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.Job = TaskJob.ShortenURL;
-            task.Info.DataType = EDataType.URL;
-            task.Info.FileName = string.Format(Resources.UploadTask_CreateURLShortenerTask_Shorten_URL___0__, taskSettings.URLShortenerDestination.GetLocalizedDescription());
-            task.Info.Result.URL = url;
-            return task;
-        }
+        //public static WorkerTask CreateURLShortenerTask(string url, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.Job = TaskJob.ShortenURL;
+        //    task.Info.DataType = EDataType.URL;
+        //    task.Info.FileName = string.Format(Resources.UploadTask_CreateURLShortenerTask_Shorten_URL___0__, taskSettings.URLShortenerDestination.GetLocalizedDescription());
+        //    task.Info.Result.URL = url;
+        //    return task;
+        //}
 
-        public static WorkerTask CreateShareURLTask(string url, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.Job = TaskJob.ShareURL;
-            task.Info.DataType = EDataType.URL;
-            task.Info.FileName = string.Format(Resources.UploadTask_CreateShareURLTask_Share_URL___0__, taskSettings.URLSharingServiceDestination.GetLocalizedDescription());
-            task.Info.Result.URL = url;
-            return task;
-        }
+        //public static WorkerTask CreateShareURLTask(string url, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.Job = TaskJob.ShareURL;
+        //    task.Info.DataType = EDataType.URL;
+        //    task.Info.FileName = string.Format(Resources.UploadTask_CreateShareURLTask_Share_URL___0__, taskSettings.URLSharingServiceDestination.GetLocalizedDescription());
+        //    task.Info.Result.URL = url;
+        //    return task;
+        //}
 
         public static WorkerTask CreateFileJobTask(string filePath, TaskMetadata metadata, TaskSettings taskSettings, string customFileName = null)
         {
@@ -206,31 +206,31 @@ namespace ShareX
             return task;
         }
 
-        public static WorkerTask CreateDownloadTask(string url, bool upload, TaskSettings taskSettings)
-        {
-            WorkerTask task = new WorkerTask(taskSettings);
-            task.Info.Job = upload ? TaskJob.DownloadUpload : TaskJob.Download;
+        //public static WorkerTask CreateDownloadTask(string url, bool upload, TaskSettings taskSettings)
+        //{
+        //    WorkerTask task = new WorkerTask(taskSettings);
+        //    task.Info.Job = upload ? TaskJob.DownloadUpload : TaskJob.Download;
 
-            string fileName = URLHelpers.URLDecode(url, 10);
-            fileName = URLHelpers.GetFileName(fileName);
-            fileName = FileHelpers.SanitizeFileName(fileName);
+        //    string fileName = URLHelpers.URLDecode(url, 10);
+        //    fileName = URLHelpers.GetFileName(fileName);
+        //    fileName = FileHelpers.SanitizeFileName(fileName);
 
-            if (task.Info.TaskSettings.UploadSettings.FileUploadUseNamePattern)
-            {
-                string ext = FileHelpers.GetFileNameExtension(fileName);
-                fileName = TaskHelpers.GetFileName(task.Info.TaskSettings, ext);
-            }
+        //    if (task.Info.TaskSettings.UploadSettings.FileUploadUseNamePattern)
+        //    {
+        //        string ext = FileHelpers.GetFileNameExtension(fileName);
+        //        fileName = TaskHelpers.GetFileName(task.Info.TaskSettings, ext);
+        //    }
 
-            if (string.IsNullOrEmpty(fileName))
-            {
-                return null;
-            }
+        //    if (string.IsNullOrEmpty(fileName))
+        //    {
+        //        return null;
+        //    }
 
-            task.Info.FileName = fileName;
-            task.Info.DataType = TaskHelpers.FindDataType(task.Info.FileName, taskSettings);
-            task.Info.Result.URL = url;
-            return task;
-        }
+        //    task.Info.FileName = fileName;
+        //    task.Info.DataType = TaskHelpers.FindDataType(task.Info.FileName, taskSettings);
+        //    task.Info.Result.URL = url;
+        //    return task;
+        //}
 
         #endregion Constructors
 
@@ -255,9 +255,9 @@ namespace ShareX
             switch (Info.Job)
             {
                 case TaskJob.Job:
-                case TaskJob.TextUpload:
-                    Info.Status = Resources.UploadTask_Prepare_Preparing;
-                    break;
+                //case TaskJob.TextUpload:
+                //    Info.Status = Resources.UploadTask_Prepare_Preparing;
+                //    break;
                 default:
                     Info.Status = Resources.UploadTask_Prepare_Starting;
                     break;
@@ -311,17 +311,20 @@ namespace ShareX
 
                 OnImageReady();
 
-                if (!StopRequested)
-                {
-                    if (Info.IsUploadJob && TaskHelpers.IsUploadAllowed())
-                    {
-                        DoUploadJob();
-                    }
-                    else
-                    {
-                        Info.Result.IsURLExpected = false;
-                    }
-                }
+                //if (!StopRequested)
+                //{
+                //    if (Info.IsUploadJob && TaskHelpers.IsUploadAllowed())
+                //    {
+                //        DoUploadJob();
+                //    }
+                //    else
+                //    {
+                //        Info.Result.IsURLExpected = false;
+                //    }
+                //}
+
+                Info.Result.IsURLExpected = false;
+
             }
             finally
             {
@@ -334,8 +337,9 @@ namespace ShareX
                     ClipboardHelpers.Clear();
                 }
 
-                if ((Info.Job == TaskJob.Job || (Info.Job == TaskJob.FileUpload && Info.TaskSettings.AdvancedSettings.UseAfterCaptureTasksDuringFileUpload))
-                    && Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.DeleteFile) && !string.IsNullOrEmpty(Info.FilePath) && File.Exists(Info.FilePath))
+                //if ((Info.Job == TaskJob.Job || (Info.Job == TaskJob.FileUpload && Info.TaskSettings.AdvancedSettings.UseAfterCaptureTasksDuringFileUpload))
+                //    && Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.DeleteFile) && !string.IsNullOrEmpty(Info.FilePath) && File.Exists(Info.FilePath))
+                if (Info.Job == TaskJob.Job && Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.DeleteFile) && !string.IsNullOrEmpty(Info.FilePath) && File.Exists(Info.FilePath))
                 {
                     File.Delete(Info.FilePath);
                 }
@@ -367,173 +371,173 @@ namespace ShareX
             };
         }
 
-        private void DoUploadJob()
-        {
-            if (Program.Settings.ShowUploadWarning)
-            {
-                bool disableUpload = !FirstTimeUploadForm.ShowForm();
+        //private void DoUploadJob()
+        //{
+        //    if (Program.Settings.ShowUploadWarning)
+        //    {
+        //        bool disableUpload = !FirstTimeUploadForm.ShowForm();
 
-                Program.Settings.ShowUploadWarning = false;
+        //        Program.Settings.ShowUploadWarning = false;
 
-                if (disableUpload)
-                {
-                    Program.DefaultTaskSettings.AfterCaptureJob = Program.DefaultTaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
+        //        if (disableUpload)
+        //        {
+        //            Program.DefaultTaskSettings.AfterCaptureJob = Program.DefaultTaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
 
-                    foreach (HotkeySettings hotkeySettings in Program.HotkeysConfig.Hotkeys)
-                    {
-                        if (hotkeySettings.TaskSettings != null)
-                        {
-                            hotkeySettings.TaskSettings.AfterCaptureJob = hotkeySettings.TaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
-                        }
-                    }
+        //            foreach (HotkeySettings hotkeySettings in Program.HotkeysConfig.Hotkeys)
+        //            {
+        //                if (hotkeySettings.TaskSettings != null)
+        //                {
+        //                    hotkeySettings.TaskSettings.AfterCaptureJob = hotkeySettings.TaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
+        //                }
+        //            }
 
-                    Info.TaskSettings.AfterCaptureJob = Info.TaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
-                    Info.Result.IsURLExpected = false;
-                    RequestSettingUpdate = true;
+        //            Info.TaskSettings.AfterCaptureJob = Info.TaskSettings.AfterCaptureJob.Remove(AfterCaptureTasks.UploadImageToHost);
+        //            Info.Result.IsURLExpected = false;
+        //            RequestSettingUpdate = true;
 
-                    return;
-                }
-            }
+        //            return;
+        //        }
+        //    }
 
-            if (Program.Settings.ShowLargeFileSizeWarning > 0)
-            {
-                long dataSize = Program.Settings.BinaryUnits ? Program.Settings.ShowLargeFileSizeWarning * 1024 * 1024 : Program.Settings.ShowLargeFileSizeWarning * 1000 * 1000;
-                if (Data != null && Data.Length > dataSize)
-                {
-                    using (MyMessageBox msgbox = new MyMessageBox(Resources.UploadTask_DoUploadJob_You_are_attempting_to_upload_a_large_file, "ShareX",
-                        MessageBoxButtons.YesNo, Resources.UploadManager_IsUploadConfirmed_Don_t_show_this_message_again_))
-                    {
-                        msgbox.ShowDialog();
-                        if (msgbox.IsChecked) Program.Settings.ShowLargeFileSizeWarning = 0;
-                        if (msgbox.DialogResult == DialogResult.No) Stop();
-                    }
-                }
-            }
+        //    if (Program.Settings.ShowLargeFileSizeWarning > 0)
+        //    {
+        //        long dataSize = Program.Settings.BinaryUnits ? Program.Settings.ShowLargeFileSizeWarning * 1024 * 1024 : Program.Settings.ShowLargeFileSizeWarning * 1000 * 1000;
+        //        if (Data != null && Data.Length > dataSize)
+        //        {
+        //            using (MyMessageBox msgbox = new MyMessageBox(Resources.UploadTask_DoUploadJob_You_are_attempting_to_upload_a_large_file, "ShareX",
+        //                MessageBoxButtons.YesNo, Resources.UploadManager_IsUploadConfirmed_Don_t_show_this_message_again_))
+        //            {
+        //                msgbox.ShowDialog();
+        //                if (msgbox.IsChecked) Program.Settings.ShowLargeFileSizeWarning = 0;
+        //                if (msgbox.DialogResult == DialogResult.No) Stop();
+        //            }
+        //        }
+        //    }
 
-            if (!StopRequested)
-            {
-                SettingManager.WaitUploadersConfig();
+        //    if (!StopRequested)
+        //    {
+        //        SettingManager.WaitUploadersConfig();
 
-                Status = TaskStatus.Working;
-                Info.Status = Resources.UploadTask_DoUploadJob_Uploading;
+        //        Status = TaskStatus.Working;
+        //        Info.Status = Resources.UploadTask_DoUploadJob_Uploading;
 
-                TaskbarManager.SetProgressState(Program.MainForm, TaskbarProgressBarStatus.Normal);
+        //        TaskbarManager.SetProgressState(Program.MainForm, TaskbarProgressBarStatus.Normal);
 
-                bool cancelUpload = false;
+        //        bool cancelUpload = false;
 
-                if (Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.ShowBeforeUploadWindow))
-                {
-                    using (BeforeUploadForm form = new BeforeUploadForm(Info))
-                    {
-                        cancelUpload = form.ShowDialog() != DialogResult.OK;
-                    }
-                }
+        //        if (Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.ShowBeforeUploadWindow))
+        //        {
+        //            using (BeforeUploadForm form = new BeforeUploadForm(Info))
+        //            {
+        //                cancelUpload = form.ShowDialog() != DialogResult.OK;
+        //            }
+        //        }
 
-                if (!cancelUpload)
-                {
-                    OnUploadStarted();
+        //        if (!cancelUpload)
+        //        {
+        //            OnUploadStarted();
 
-                    bool isError = DoUpload(Data, Info.FileName);
+        //            bool isError = DoUpload(Data, Info.FileName);
 
-                    if (isError && Program.Settings.MaxUploadFailRetry > 0)
-                    {
-                        for (int retry = 1; !StopRequested && isError && retry <= Program.Settings.MaxUploadFailRetry; retry++)
-                        {
-                            DebugHelper.WriteLine("Upload failed. Retrying upload.");
-                            isError = DoUpload(Data, Info.FileName, retry);
-                        }
-                    }
+        //            if (isError && Program.Settings.MaxUploadFailRetry > 0)
+        //            {
+        //                for (int retry = 1; !StopRequested && isError && retry <= Program.Settings.MaxUploadFailRetry; retry++)
+        //                {
+        //                    DebugHelper.WriteLine("Upload failed. Retrying upload.");
+        //                    isError = DoUpload(Data, Info.FileName, retry);
+        //                }
+        //            }
 
-                    if (!isError)
-                    {
-                        OnUploadCompleted();
-                    }
-                }
-                else
-                {
-                    Info.Result.IsURLExpected = false;
-                }
-            }
-        }
+        //            if (!isError)
+        //            {
+        //                OnUploadCompleted();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Info.Result.IsURLExpected = false;
+        //        }
+        //    }
+        //}
 
-        private bool DoUpload(Stream data, string fileName, int retry = 0)
-        {
-            bool isError = false;
+        //private bool DoUpload(Stream data, string fileName, int retry = 0)
+        //{
+        //    bool isError = false;
 
-            if (retry > 0)
-            {
-                if (Program.Settings.UseSecondaryUploaders)
-                {
-                    Info.TaskSettings.ImageDestination = Program.Settings.SecondaryImageUploaders[retry - 1];
-                    Info.TaskSettings.ImageFileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
-                    Info.TaskSettings.TextDestination = Program.Settings.SecondaryTextUploaders[retry - 1];
-                    Info.TaskSettings.TextFileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
-                    Info.TaskSettings.FileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
-                }
-                else
-                {
-                    Thread.Sleep(1000);
-                }
-            }
+        //    if (retry > 0)
+        //    {
+        //        if (Program.Settings.UseSecondaryUploaders)
+        //        {
+        //            Info.TaskSettings.ImageDestination = Program.Settings.SecondaryImageUploaders[retry - 1];
+        //            Info.TaskSettings.ImageFileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
+        //            Info.TaskSettings.TextDestination = Program.Settings.SecondaryTextUploaders[retry - 1];
+        //            Info.TaskSettings.TextFileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
+        //            Info.TaskSettings.FileDestination = Program.Settings.SecondaryFileUploaders[retry - 1];
+        //        }
+        //        else
+        //        {
+        //            Thread.Sleep(1000);
+        //        }
+        //    }
 
-            SSLBypassHelper sslBypassHelper = null;
+        //    SSLBypassHelper sslBypassHelper = null;
 
-            try
-            {
-                if (HelpersOptions.AcceptInvalidSSLCertificates)
-                {
-                    sslBypassHelper = new SSLBypassHelper();
-                }
+        //    try
+        //    {
+        //        if (HelpersOptions.AcceptInvalidSSLCertificates)
+        //        {
+        //            sslBypassHelper = new SSLBypassHelper();
+        //        }
 
-                if (!CheckUploadFilters(data, fileName))
-                {
-                    switch (Info.UploadDestination)
-                    {
-                        case EDataType.Image:
-                            Info.Result = UploadImage(data, fileName);
-                            break;
-                        case EDataType.Text:
-                            Info.Result = UploadText(data, fileName);
-                            break;
-                        case EDataType.File:
-                            Info.Result = UploadFile(data, fileName);
-                            break;
-                    }
-                }
+        //        if (!CheckUploadFilters(data, fileName))
+        //        {
+        //            switch (Info.UploadDestination)
+        //            {
+        //                case EDataType.Image:
+        //                    Info.Result = UploadImage(data, fileName);
+        //                    break;
+        //                case EDataType.Text:
+        //                    Info.Result = UploadText(data, fileName);
+        //                    break;
+        //                case EDataType.File:
+        //                    Info.Result = UploadFile(data, fileName);
+        //                    break;
+        //            }
+        //        }
 
-                StopRequested |= taskReferenceHelper.StopRequested;
-            }
-            catch (Exception e)
-            {
-                if (!StopRequested)
-                {
-                    DebugHelper.WriteException(e);
-                    isError = true;
-                    AddErrorMessage(e.ToString());
-                }
-            }
-            finally
-            {
-                if (sslBypassHelper != null)
-                {
-                    sslBypassHelper.Dispose();
-                }
+        //        StopRequested |= taskReferenceHelper.StopRequested;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        if (!StopRequested)
+        //        {
+        //            DebugHelper.WriteException(e);
+        //            isError = true;
+        //            AddErrorMessage(e.ToString());
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        if (sslBypassHelper != null)
+        //        {
+        //            sslBypassHelper.Dispose();
+        //        }
 
-                if (Info.Result == null)
-                {
-                    Info.Result = new UploadResult();
-                }
+        //        if (Info.Result == null)
+        //        {
+        //            Info.Result = new UploadResult();
+        //        }
 
-                if (uploader != null)
-                {
-                    AddErrorMessage(uploader.Errors);
-                }
+        //        if (uploader != null)
+        //        {
+        //            AddErrorMessage(uploader.Errors);
+        //        }
 
-                isError |= Info.Result.IsError;
-            }
+        //        isError |= Info.Result.IsError;
+        //    }
 
-            return isError;
-        }
+        //    return isError;
+        //}
 
         private void AddErrorMessage(UploaderErrorManager errors)
         {
@@ -562,19 +566,19 @@ namespace ShareX
                 ClipboardHelpers.Clear();
             }
 
-            if (Info.Job == TaskJob.Download || Info.Job == TaskJob.DownloadUpload)
-            {
-                bool downloadResult = DownloadFromURL(Info.Job == TaskJob.DownloadUpload);
+            //if (Info.Job == TaskJob.Download || Info.Job == TaskJob.DownloadUpload)
+            //{
+            //    bool downloadResult = DownloadFromURL(Info.Job == TaskJob.DownloadUpload);
 
-                if (!downloadResult)
-                {
-                    return false;
-                }
-                else if (Info.Job == TaskJob.Download)
-                {
-                    return true;
-                }
-            }
+            //    if (!downloadResult)
+            //    {
+            //        return false;
+            //    }
+            //    else if (Info.Job == TaskJob.Download)
+            //    {
+            //        return true;
+            //    }
+            //}
 
             if (Info.Job == TaskJob.Job)
             {
@@ -585,14 +589,14 @@ namespace ShareX
 
                 DoFileJobs();
             }
-            else if (Info.Job == TaskJob.TextUpload && !string.IsNullOrEmpty(Text))
-            {
-                DoTextJobs();
-            }
-            else if (Info.Job == TaskJob.FileUpload && Info.TaskSettings.AdvancedSettings.UseAfterCaptureTasksDuringFileUpload)
-            {
-                DoFileJobs();
-            }
+            //else if (Info.Job == TaskJob.TextUpload && !string.IsNullOrEmpty(Text))
+            //{
+            //    DoTextJobs();
+            //}
+            //else if (Info.Job == TaskJob.FileUpload && Info.TaskSettings.AdvancedSettings.UseAfterCaptureTasksDuringFileUpload)
+            //{
+            //    DoFileJobs();
+            //}
 
             if (Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.DoOCR))
             {
@@ -664,8 +668,7 @@ namespace ShareX
 
             Info.Metadata.Image = Image;
 
-            if (Info.TaskSettings.AfterCaptureJob.HasFlagAny(AfterCaptureTasks.SaveImageToFile, AfterCaptureTasks.SaveImageToFileWithDialog, AfterCaptureTasks.DoOCR,
-                AfterCaptureTasks.UploadImageToHost))
+            if (Info.TaskSettings.AfterCaptureJob.HasFlagAny(AfterCaptureTasks.SaveImageToFile, AfterCaptureTasks.SaveImageToFileWithDialog, AfterCaptureTasks.DoOCR))
             {
                 ImageData imageData = TaskHelpers.PrepareImage(Image, Info.TaskSettings);
                 Data = imageData.ImageStream;
@@ -852,32 +855,32 @@ namespace ShareX
                     Info.Result.ForceHTTPS();
                 }
 
-                if (Info.Job != TaskJob.ShareURL && (Info.TaskSettings.AfterUploadJob.HasFlag(AfterUploadTasks.UseURLShortener) || Info.Job == TaskJob.ShortenURL ||
-                    (Info.TaskSettings.AdvancedSettings.AutoShortenURLLength > 0 && Info.Result.URL.Length > Info.TaskSettings.AdvancedSettings.AutoShortenURLLength)))
-                {
-                    UploadResult result = ShortenURL(Info.Result.URL);
+                //if (Info.Job != TaskJob.ShareURL && (Info.TaskSettings.AfterUploadJob.HasFlag(AfterUploadTasks.UseURLShortener) || Info.Job == TaskJob.ShortenURL ||
+                //    (Info.TaskSettings.AdvancedSettings.AutoShortenURLLength > 0 && Info.Result.URL.Length > Info.TaskSettings.AdvancedSettings.AutoShortenURLLength)))
+                //{
+                //    UploadResult result = ShortenURL(Info.Result.URL);
 
-                    if (result != null)
-                    {
-                        Info.Result.ShortenedURL = result.ShortenedURL;
-                        Info.Result.Errors.Add(result.Errors);
-                    }
-                }
+                //    if (result != null)
+                //    {
+                //        Info.Result.ShortenedURL = result.ShortenedURL;
+                //        Info.Result.Errors.Add(result.Errors);
+                //    }
+                //}
 
-                if (Info.Job != TaskJob.ShortenURL && (Info.TaskSettings.AfterUploadJob.HasFlag(AfterUploadTasks.ShareURL) || Info.Job == TaskJob.ShareURL))
-                {
-                    UploadResult result = ShareURL(Info.Result.ToString());
+                //if (Info.Job != TaskJob.ShortenURL && (Info.TaskSettings.AfterUploadJob.HasFlag(AfterUploadTasks.ShareURL) || Info.Job == TaskJob.ShareURL))
+                //{
+                //    UploadResult result = ShareURL(Info.Result.ToString());
 
-                    if (result != null)
-                    {
-                        Info.Result.Errors.Add(result.Errors);
-                    }
+                //    if (result != null)
+                //    {
+                //        Info.Result.Errors.Add(result.Errors);
+                //    }
 
-                    if (Info.Job == TaskJob.ShareURL)
-                    {
-                        Info.Result.IsURLExpected = false;
-                    }
-                }
+                //    if (Info.Job == TaskJob.ShareURL)
+                //    {
+                //        Info.Result.IsURLExpected = false;
+                //    }
+                //}
 
                 if (Info.TaskSettings.AfterUploadJob.HasFlag(AfterUploadTasks.CopyURLToClipboard))
                 {

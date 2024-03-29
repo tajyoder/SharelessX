@@ -635,7 +635,8 @@ namespace ShareX
 
         private void btnChromeOpenExtensionPage_Click(object sender, EventArgs e)
         {
-            URLHelpers.OpenURL("https://chrome.google.com/webstore/detail/sharex/nlkoigbdolhchiicbonbihbphgamnaoc");
+            MessageBox.Show("Functionality disabled.");
+            //URLHelpers.OpenURL("https://chrome.google.com/webstore/detail/sharex/nlkoigbdolhchiicbonbihbphgamnaoc");
         }
 
         private void cbFirefoxAddonSupport_CheckedChanged(object sender, EventArgs e)
@@ -649,7 +650,8 @@ namespace ShareX
 
         private void btnFirefoxOpenAddonPage_Click(object sender, EventArgs e)
         {
-            URLHelpers.OpenURL("https://addons.mozilla.org/en-US/firefox/addon/sharex/");
+            MessageBox.Show("Functionality disabled.");
+            //URLHelpers.OpenURL("https://addons.mozilla.org/en-US/firefox/addon/sharex/");
         }
 
         private void cbSteamShowInApp_CheckedChanged(object sender, EventArgs e)

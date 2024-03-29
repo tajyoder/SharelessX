@@ -72,37 +72,37 @@ namespace ShareX
 
             switch (job)
             {
-                // Upload
-                case HotkeyType.FileUpload:
-                    UploadManager.UploadFile(safeTaskSettings);
-                    break;
-                case HotkeyType.FolderUpload:
-                    UploadManager.UploadFolder(safeTaskSettings);
-                    break;
-                case HotkeyType.ClipboardUpload:
-                    UploadManager.ClipboardUpload(safeTaskSettings);
-                    break;
-                case HotkeyType.ClipboardUploadWithContentViewer:
-                    UploadManager.ClipboardUploadWithContentViewer(safeTaskSettings);
-                    break;
-                case HotkeyType.UploadText:
-                    UploadManager.ShowTextUploadDialog(safeTaskSettings);
-                    break;
-                case HotkeyType.UploadURL:
-                    UploadManager.UploadURL(safeTaskSettings);
-                    break;
-                case HotkeyType.DragDropUpload:
-                    OpenDropWindow(safeTaskSettings);
-                    break;
-                case HotkeyType.ShortenURL:
-                    UploadManager.ShowShortenURLDialog(safeTaskSettings);
-                    break;
-                case HotkeyType.TweetMessage:
-                    TweetMessage();
-                    break;
-                case HotkeyType.StopUploads:
-                    TaskManager.StopAllTasks();
-                    break;
+                //// Upload
+                //case HotkeyType.FileUpload:
+                //    UploadManager.UploadFile(safeTaskSettings);
+                //    break;
+                //case HotkeyType.FolderUpload:
+                //    UploadManager.UploadFolder(safeTaskSettings);
+                //    break;
+                //case HotkeyType.ClipboardUpload:
+                //    UploadManager.ClipboardUpload(safeTaskSettings);
+                //    break;
+                //case HotkeyType.ClipboardUploadWithContentViewer:
+                //    UploadManager.ClipboardUploadWithContentViewer(safeTaskSettings);
+                //    break;
+                //case HotkeyType.UploadText:
+                //    UploadManager.ShowTextUploadDialog(safeTaskSettings);
+                //    break;
+                //case HotkeyType.UploadURL:
+                //    UploadManager.UploadURL(safeTaskSettings);
+                //    break;
+                //case HotkeyType.DragDropUpload:
+                //    OpenDropWindow(safeTaskSettings);
+                //    break;
+                //case HotkeyType.ShortenURL:
+                //    UploadManager.ShowShortenURLDialog(safeTaskSettings);
+                //    break;
+                //case HotkeyType.TweetMessage:
+                //    TweetMessage();
+                //    break;
+                //case HotkeyType.StopUploads:
+                //    TaskManager.StopAllTasks();
+                //    break;
                 // Screen capture
                 case HotkeyType.PrintScreen:
                     new CaptureFullscreen().Capture(safeTaskSettings);
@@ -838,12 +838,12 @@ namespace ShareX
             IndexerSettings indexerSettings = taskSettings.ToolsSettingsReference.IndexerSettings;
             indexerSettings.BinaryUnits = Program.Settings.BinaryUnits;
             DirectoryIndexerForm form = new DirectoryIndexerForm(indexerSettings);
-            form.UploadRequested += source =>
-            {
-                WorkerTask task = WorkerTask.CreateTextUploaderTask(source, taskSettings);
-                task.Info.FileName = Path.ChangeExtension(task.Info.FileName, indexerSettings.Output.ToString().ToLowerInvariant());
-                TaskManager.Start(task);
-            };
+            //form.UploadRequested += source =>
+            //{
+            //    WorkerTask task = WorkerTask.CreateTextUploaderTask(source, taskSettings);
+            //    task.Info.FileName = Path.ChangeExtension(task.Info.FileName, indexerSettings.Output.ToString().ToLowerInvariant());
+            //    TaskManager.Start(task);
+            //};
             form.Show();
         }
 
@@ -1640,7 +1640,7 @@ namespace ShareX
                     case AfterCaptureTasks.ScanQRCode: return ShareXResources.IsDarkTheme ? Resources.barcode_2d_white : Resources.barcode_2d;
                     case AfterCaptureTasks.DoOCR: return ShareXResources.IsDarkTheme ? Resources.edit_drop_cap_white : Resources.edit_drop_cap;
                     case AfterCaptureTasks.ShowBeforeUploadWindow: return Resources.application__arrow;
-                    case AfterCaptureTasks.UploadImageToHost: return Resources.upload_cloud;
+                    //case AfterCaptureTasks.UploadImageToHost: return Resources.upload_cloud;
                     case AfterCaptureTasks.DeleteFile: return Resources.bin;
                 }
             }
@@ -1663,17 +1663,17 @@ namespace ShareX
                 {
                     default: throw new Exception("Icon missing for hotkey type: " + hotkeyType);
                     case HotkeyType.None: return null;
-                    // Upload
-                    case HotkeyType.FileUpload: return Resources.folder_open_document;
-                    case HotkeyType.FolderUpload: return Resources.folder;
-                    case HotkeyType.ClipboardUpload: return Resources.clipboard;
-                    case HotkeyType.ClipboardUploadWithContentViewer: return Resources.clipboard_task;
-                    case HotkeyType.UploadText: return Resources.notebook;
-                    case HotkeyType.UploadURL: return Resources.drive;
-                    case HotkeyType.DragDropUpload: return Resources.inbox;
-                    case HotkeyType.ShortenURL: return ShareXResources.IsDarkTheme ? Resources.edit_scale_white : Resources.edit_scale;
-                    case HotkeyType.TweetMessage: return ShareXResources.IsDarkTheme ? Resources.X_white : Resources.X_black;
-                    case HotkeyType.StopUploads: return Resources.cross_button;
+                    //// Upload
+                    //case HotkeyType.FileUpload: return Resources.folder_open_document;
+                    //case HotkeyType.FolderUpload: return Resources.folder;
+                    //case HotkeyType.ClipboardUpload: return Resources.clipboard;
+                    //case HotkeyType.ClipboardUploadWithContentViewer: return Resources.clipboard_task;
+                    //case HotkeyType.UploadText: return Resources.notebook;
+                    //case HotkeyType.UploadURL: return Resources.drive;
+                    //case HotkeyType.DragDropUpload: return Resources.inbox;
+                    //case HotkeyType.ShortenURL: return ShareXResources.IsDarkTheme ? Resources.edit_scale_white : Resources.edit_scale;
+                    //case HotkeyType.TweetMessage: return ShareXResources.IsDarkTheme ? Resources.X_white : Resources.X_black;
+                    //case HotkeyType.StopUploads: return Resources.cross_button;
                     // Screen capture
                     case HotkeyType.PrintScreen: return Resources.layer_fullscreen;
                     case HotkeyType.ActiveWindow: return Resources.application_blue;
@@ -1933,51 +1933,51 @@ namespace ShareX
                                 UploadManager.UploadText(nativeMessagingInput.Text, taskSettings);
                             }
                             break;
-                        case NativeMessagingAction.UploadImage:
-                            if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
-                            {
-                                Bitmap bmp = WebHelpers.DataURLToImage(nativeMessagingInput.URL);
+                        //case NativeMessagingAction.UploadImage:
+                        //    if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
+                        //    {
+                        //        Bitmap bmp = WebHelpers.DataURLToImage(nativeMessagingInput.URL);
 
-                                if (bmp == null && taskSettings.AdvancedSettings.ProcessImagesDuringExtensionUpload)
-                                {
-                                    try
-                                    {
-                                        bmp = await WebHelpers.DownloadImageAsync(nativeMessagingInput.URL);
-                                    }
-                                    catch
-                                    {
-                                    }
-                                }
+                        //        if (bmp == null && taskSettings.AdvancedSettings.ProcessImagesDuringExtensionUpload)
+                        //        {
+                        //            try
+                        //            {
+                        //                bmp = await WebHelpers.DownloadImageAsync(nativeMessagingInput.URL);
+                        //            }
+                        //            catch
+                        //            {
+                        //            }
+                        //        }
 
-                                if (bmp != null)
-                                {
-                                    UploadManager.RunImageTask(bmp, taskSettings);
-                                }
-                                else
-                                {
-                                    UploadManager.DownloadAndUploadFile(nativeMessagingInput.URL, taskSettings);
-                                }
-                            }
-                            break;
-                        case NativeMessagingAction.UploadVideo:
-                        case NativeMessagingAction.UploadAudio:
-                            if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
-                            {
-                                UploadManager.DownloadAndUploadFile(nativeMessagingInput.URL, taskSettings);
-                            }
-                            break;
-                        case NativeMessagingAction.UploadText:
-                            if (!string.IsNullOrEmpty(nativeMessagingInput.Text))
-                            {
-                                UploadManager.UploadText(nativeMessagingInput.Text, taskSettings);
-                            }
-                            break;
-                        case NativeMessagingAction.ShortenURL:
-                            if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
-                            {
-                                UploadManager.ShortenURL(nativeMessagingInput.URL, taskSettings);
-                            }
-                            break;
+                        //        if (bmp != null)
+                        //        {
+                        //            UploadManager.RunImageTask(bmp, taskSettings);
+                        //        }
+                        //        else
+                        //        {
+                        //            UploadManager.DownloadAndUploadFile(nativeMessagingInput.URL, taskSettings);
+                        //        }
+                        //    }
+                        //    break;
+                        //case NativeMessagingAction.UploadVideo:
+                        //case NativeMessagingAction.UploadAudio:
+                        //    if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
+                        //    {
+                        //        UploadManager.DownloadAndUploadFile(nativeMessagingInput.URL, taskSettings);
+                        //    }
+                        //    break;
+                        //case NativeMessagingAction.UploadText:
+                        //    if (!string.IsNullOrEmpty(nativeMessagingInput.Text))
+                        //    {
+                        //        UploadManager.UploadText(nativeMessagingInput.Text, taskSettings);
+                        //    }
+                        //    break;
+                        //case NativeMessagingAction.ShortenURL:
+                        //    if (!string.IsNullOrEmpty(nativeMessagingInput.URL))
+                        //    {
+                        //        UploadManager.ShortenURL(nativeMessagingInput.URL, taskSettings);
+                        //    }
+                        //    break;
                     }
                 }
             }

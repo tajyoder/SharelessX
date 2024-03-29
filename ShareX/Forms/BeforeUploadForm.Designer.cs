@@ -29,19 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BeforeUploadForm));
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbPreview = new ShareX.HelpersLib.MyPictureBox();
             this.ucBeforeUpload = new ShareX.BeforeUploadControl();
             this.SuspendLayout();
-            // 
-            // btnOK
-            // 
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.Name = "btnOK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -71,17 +63,16 @@
             // 
             resources.ApplyResources(this.ucBeforeUpload, "ucBeforeUpload");
             this.ucBeforeUpload.Name = "ucBeforeUpload";
+            this.ucBeforeUpload.Load += new System.EventHandler(this.ucBeforeUpload_Load);
             // 
             // BeforeUploadForm
             // 
-            this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.pbPreview);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ucBeforeUpload);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -96,7 +87,6 @@
         #endregion
 
         private BeforeUploadControl ucBeforeUpload;
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblTitle;
         private HelpersLib.MyPictureBox pbPreview;

@@ -41,6 +41,7 @@
             this.flp.Padding = new System.Windows.Forms.Padding(8);
             this.flp.Size = new System.Drawing.Size(321, 372);
             this.flp.TabIndex = 0;
+            this.flp.Paint += new System.Windows.Forms.PaintEventHandler(this.flp_Paint);
             // 
             // BeforeUploadControl
             // 

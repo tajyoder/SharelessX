@@ -493,12 +493,12 @@ namespace ShareX
                             FileHelpers.OpenFolderWithFile(filePath);
                         }
                         break;
-                    case ThumbnailViewClickAction.OpenURL:
-                        if (info.Result != null)
-                        {
-                            URLHelpers.OpenURL(info.Result.ToString());
-                        }
-                        break;
+                    //case ThumbnailViewClickAction.OpenURL:
+                    //    if (info.Result != null)
+                    //    {
+                    //        URLHelpers.OpenURL(info.Result.ToString());
+                    //    }
+                    //    break;
                     case ThumbnailViewClickAction.EditImage:
                         if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath) && FileHelpers.IsImageFile(filePath))
                         {

@@ -53,7 +53,8 @@ namespace ShareX
         public HotkeyType Job = HotkeyType.None;
 
         public bool UseDefaultAfterCaptureJob = true;
-        public AfterCaptureTasks AfterCaptureJob = AfterCaptureTasks.CopyImageToClipboard | AfterCaptureTasks.SaveImageToFile | AfterCaptureTasks.UploadImageToHost;
+        public AfterCaptureTasks AfterCaptureJob = AfterCaptureTasks.CopyImageToClipboard | AfterCaptureTasks.SaveImageToFile;
+        //public AfterCaptureTasks AfterCaptureJob = AfterCaptureTasks.CopyImageToClipboard | AfterCaptureTasks.SaveImageToFile | AfterCaptureTasks.UploadImageToHost;
 
         public bool UseDefaultAfterUploadJob = true;
         public AfterUploadTasks AfterUploadJob = AfterUploadTasks.CopyURLToClipboard;
@@ -313,7 +314,8 @@ namespace ShareX
         public float ToastWindowFadeDuration = 1f;
         public ContentAlignment ToastWindowPlacement = ContentAlignment.BottomRight;
         public Size ToastWindowSize = new Size(400, 300);
-        public ToastClickAction ToastWindowLeftClickAction = ToastClickAction.OpenUrl;
+        //public ToastClickAction ToastWindowLeftClickAction = ToastClickAction.OpenUrl;
+        public ToastClickAction ToastWindowLeftClickAction = ToastClickAction.OpenFile;
         public ToastClickAction ToastWindowRightClickAction = ToastClickAction.CloseNotification;
         public ToastClickAction ToastWindowMiddleClickAction = ToastClickAction.AnnotateImage;
         public bool ToastWindowAutoHide = true;

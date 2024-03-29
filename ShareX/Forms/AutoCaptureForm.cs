@@ -117,7 +117,8 @@ namespace ShareX
                     TaskSettings.UseDefaultAdvancedSettings = false;
                     TaskSettings.GeneralSettings.DisableNotifications = true;
 
-                    UploadManager.RunImageTask(bmp, TaskSettings, true, true);
+                    System.Windows.Forms.MessageBox.Show("Call to UploadManager disabled. Stacktrace: \n\n" + Environment.StackTrace);
+                    //UploadManager.RunImageTask(bmp, TaskSettings, true, true);
                 }
             }
         }

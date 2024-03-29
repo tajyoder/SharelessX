@@ -357,7 +357,8 @@ namespace ShareX
 
                                 RecentManager.Add(task);
 
-                                if (!info.TaskSettings.GeneralSettings.DisableNotifications && info.Job != TaskJob.ShareURL)
+                                //if (!info.TaskSettings.GeneralSettings.DisableNotifications && info.Job != TaskJob.ShareURL)
+                                if (!info.TaskSettings.GeneralSettings.DisableNotifications)
                                 {
                                     if (info.TaskSettings.GeneralSettings.PlaySoundAfterUpload)
                                     {

@@ -181,7 +181,9 @@ namespace ShareX
 
         private void ActionsToolbarForm_DragDrop(object sender, DragEventArgs e)
         {
-            UploadManager.DragDropUpload(e.Data);
+
+            MessageBox.Show("Call to UploadManager disabled.");
+            //UploadManager.DragDropUpload(e.Data);
         }
 
         private void CheckToolbarPosition()

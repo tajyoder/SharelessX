@@ -45,102 +45,103 @@ namespace ShareX.UploadersLib
         public static HttpWebRequest CreateWebRequest(HttpMethod method, string url, NameValueCollection headers = null, CookieCollection cookies = null,
             string contentType = null, long contentLength = 0)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            return null;
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            string accept = null;
-            string referer = null;
-            string userAgent = ShareXResources.UserAgent;
+            //string accept = null;
+            //string referer = null;
+            //string userAgent = ShareXResources.UserAgent;
 
-            if (headers != null)
-            {
-                if (headers["Accept"] != null)
-                {
-                    accept = headers["Accept"];
-                    headers.Remove("Accept");
-                }
+            //if (headers != null)
+            //{
+            //    if (headers["Accept"] != null)
+            //    {
+            //        accept = headers["Accept"];
+            //        headers.Remove("Accept");
+            //    }
 
-                if (headers["Content-Length"] != null)
-                {
-                    if (long.TryParse(headers["Content-Length"], out contentLength))
-                    {
-                        request.ContentLength = contentLength;
-                    }
+            //    if (headers["Content-Length"] != null)
+            //    {
+            //        if (long.TryParse(headers["Content-Length"], out contentLength))
+            //        {
+            //            request.ContentLength = contentLength;
+            //        }
 
-                    headers.Remove("Content-Length");
-                }
+            //        headers.Remove("Content-Length");
+            //    }
 
-                if (headers["Content-Type"] != null)
-                {
-                    contentType = headers["Content-Type"];
-                    headers.Remove("Content-Type");
-                }
+            //    if (headers["Content-Type"] != null)
+            //    {
+            //        contentType = headers["Content-Type"];
+            //        headers.Remove("Content-Type");
+            //    }
 
-                if (headers["Cookie"] != null)
-                {
-                    string cookieHeader = headers["Cookie"];
+            //    if (headers["Cookie"] != null)
+            //    {
+            //        string cookieHeader = headers["Cookie"];
 
-                    if (cookies == null)
-                    {
-                        cookies = new CookieCollection();
-                    }
+            //        if (cookies == null)
+            //        {
+            //            cookies = new CookieCollection();
+            //        }
 
-                    foreach (string cookie in cookieHeader.Split(new string[] { "; " }, StringSplitOptions.RemoveEmptyEntries))
-                    {
-                        string[] cookieValues = cookie.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+            //        foreach (string cookie in cookieHeader.Split(new string[] { "; " }, StringSplitOptions.RemoveEmptyEntries))
+            //        {
+            //            string[] cookieValues = cookie.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
 
-                        if (cookieValues.Length == 2)
-                        {
-                            cookies.Add(new Cookie(cookieValues[0], cookieValues[1], "/", request.Host.Split(':')[0]));
-                        }
-                    }
+            //            if (cookieValues.Length == 2)
+            //            {
+            //                cookies.Add(new Cookie(cookieValues[0], cookieValues[1], "/", request.Host.Split(':')[0]));
+            //            }
+            //        }
 
-                    headers.Remove("Cookie");
-                }
+            //        headers.Remove("Cookie");
+            //    }
 
-                if (headers["Referer"] != null)
-                {
-                    referer = headers["Referer"];
-                    headers.Remove("Referer");
-                }
+            //    if (headers["Referer"] != null)
+            //    {
+            //        referer = headers["Referer"];
+            //        headers.Remove("Referer");
+            //    }
 
-                if (headers["User-Agent"] != null)
-                {
-                    userAgent = headers["User-Agent"];
-                    headers.Remove("User-Agent");
-                }
+            //    if (headers["User-Agent"] != null)
+            //    {
+            //        userAgent = headers["User-Agent"];
+            //        headers.Remove("User-Agent");
+            //    }
 
-                request.Headers.Add(headers);
-            }
+            //    request.Headers.Add(headers);
+            //}
 
-            request.Accept = accept;
-            request.ContentType = contentType;
-            request.CookieContainer = new CookieContainer();
-            if (cookies != null) request.CookieContainer.Add(cookies);
-            request.Method = method.ToString();
-            IWebProxy proxy = HelpersOptions.CurrentProxy.GetWebProxy();
-            if (proxy != null) request.Proxy = proxy;
-            request.Referer = referer;
-            request.UserAgent = userAgent;
+            //request.Accept = accept;
+            //request.ContentType = contentType;
+            //request.CookieContainer = new CookieContainer();
+            //if (cookies != null) request.CookieContainer.Add(cookies);
+            //request.Method = method.ToString();
+            //IWebProxy proxy = HelpersOptions.CurrentProxy.GetWebProxy();
+            //if (proxy != null) request.Proxy = proxy;
+            //request.Referer = referer;
+            //request.UserAgent = userAgent;
 
-            if (contentLength > 0)
-            {
-                request.AllowWriteStreamBuffering = HelpersOptions.CurrentProxy.IsValidProxy();
+            //if (contentLength > 0)
+            //{
+            //    request.AllowWriteStreamBuffering = HelpersOptions.CurrentProxy.IsValidProxy();
 
-                if (method == HttpMethod.GET)
-                {
-                    request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
-                }
+            //    if (method == HttpMethod.GET)
+            //    {
+            //        request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
+            //    }
 
-                request.ContentLength = contentLength;
-                request.Pipelined = false;
-                request.Timeout = -1;
-            }
-            else
-            {
-                request.KeepAlive = false;
-            }
+            //    request.ContentLength = contentLength;
+            //    request.Pipelined = false;
+            //    request.Timeout = -1;
+            //}
+            //else
+            //{
+            //    request.KeepAlive = false;
+            //}
 
-            return request;
+            //return request;
         }
 
         public static string CreateBoundary()
